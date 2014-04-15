@@ -1,30 +1,30 @@
+$perspective: 5000px;
+$size: 800px;
 html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  perspective: 200px;
+  -webkit-perspective: $perspective;
   background: #faebd7;
 }
 
 #stage {
   height: 100%;
   width: 100%;
-  overflow: hidden;
   text-align: center;
   transform-style: preserve-3d;
-  perspective: 200px;
-  transform: translate3d(0, 0, -1000px);
+  -webkit-perspective: $perspective;
 }
 
-#shape {
+#nucleus {
   text-align: center;
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
   /*-webkit-animation: spin 10s linear 0s infinite;*/
-  transform-style: preserve-3d;
-  margin-top: 40%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 0, -10000px);
+  height: $size;
+  width: $size;
 }
 
 @-webkit-keyframes spin {
@@ -37,21 +37,22 @@ html, body {
   height: inherit;
   width: inherit;
   opacity: 0.8;
+  border: 1px solid black;
 }
 
 #intro {
   background: red;
-  -webkit-transform: rotateY(0deg) rotateX(55deg) translate3d(0, 0, 60px);
+  -webkit-transform: rotateY(0deg) translateZ($size/2);
 }
 #about {
   background: yellow;
-  -webkit-transform: rotateY(90deg) rotateX(20deg) translate3d(0, 0, 30px);
+  -webkit-transform: rotateY(90deg) translateZ($size/2);
 }
 #lab {
   background: green;
-  -webkit-transform: rotateY(180deg) rotateX(-35deg) translate3d(0, 0, 40px);
+  -webkit-transform: rotateY(180deg) translateZ($size/2);
 }
 #contact {
   background: orange;
-  -webkit-transform: rotateY(270deg) rotateX(-10deg) translate3d(0, 0, 80px);
+  -webkit-transform: rotateY(270deg) translateZ($size/2);
 }

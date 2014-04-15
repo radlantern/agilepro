@@ -2,27 +2,25 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  perspective: 200px;
+  -webkit-perspective: 5000px;
   background: #faebd7; }
 
 #stage {
   height: 100%;
   width: 100%;
-  overflow: hidden;
   text-align: center;
   transform-style: preserve-3d;
-  perspective: 200px;
-  transform: translate3d(0, 0, -1000px); }
+  -webkit-perspective: 5000px; }
 
-#shape {
+#nucleus {
   text-align: center;
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
   /*-webkit-animation: spin 10s linear 0s infinite;*/
-  transform-style: preserve-3d;
-  margin-top: 40%; }
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 0, -10000px);
+  height: 800px;
+  width: 800px; }
 
 @-webkit-keyframes spin {
   0% {
@@ -35,20 +33,21 @@ html, body {
   position: absolute;
   height: inherit;
   width: inherit;
-  opacity: 0.8; }
+  opacity: 0.8;
+  border: 1px solid black; }
 
 #intro {
   background: red;
-  -webkit-transform: rotateY(0deg) rotateX(55deg) translate3d(0, 0, 60px); }
+  -webkit-transform: rotateY(0deg) translateZ(400px); }
 
 #about {
   background: yellow;
-  -webkit-transform: rotateY(90deg) rotateX(20deg) translate3d(0, 0, 30px); }
+  -webkit-transform: rotateY(90deg) translateZ(400px); }
 
 #lab {
   background: green;
-  -webkit-transform: rotateY(180deg) rotateX(-35deg) translate3d(0, 0, 40px); }
+  -webkit-transform: rotateY(180deg) translateZ(400px); }
 
 #contact {
   background: orange;
-  -webkit-transform: rotateY(270deg) rotateX(-10deg) translate3d(0, 0, 80px); }
+  -webkit-transform: rotateY(270deg) translateZ(400px); }
