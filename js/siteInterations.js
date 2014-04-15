@@ -1,11 +1,14 @@
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 $(document).ready(function()
 {
 	var $window = $(window);
 	var win = {height: $window.height(), width: $window.width()};
 
 	//$('.page').css({height: win.height / 2, width: win.width});
-	//TweenMax.to($('#nucleus'),0,{height: win.height/1.5, width: win.height/1.5});
-	TweenMax.to($('.page'),0,{translateZ: win.height/1.5/1.9});
+	//TweenMax.set($('#nucleus'),{height: win.height/1.5, width: win.height/1.5});
+	//TweenMax.set($('.page'),{transformOrigin:"50% 50% 100"});
 
 	var sides = $('.page').length;
 	/*$('.page').each(function(index){
@@ -17,8 +20,9 @@ $(document).ready(function()
 		}
 		TweenMax.to($(this),0,{ rotationY: rotation, z: distance});
 	});*/
-	TweenMax.to('#nucleus',10,{rotationY: 400, ease: Linear.easeNone, onComplete: startSite});
-	TweenMax.to('#nucleus',10,{z:-1000});
+	TweenMax.fromTo('#nucleus',2,{rotationY: getRandomInt(-300,300), rotationX: getRandomInt(-300,300),},{rotationY: 590, rotationX: 500, z:0, onComplete: startSite});
+	TweenMax.to('.page',1,{opacity: 0.8});
+	//TweenMax.to('#nucleus',10,{});
 });
 
 function startSite() {
