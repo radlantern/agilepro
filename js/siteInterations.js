@@ -20,7 +20,7 @@ $(document).ready(function()
 		}
 		TweenMax.to($(this),0,{ rotationY: rotation, z: distance});
 	});*/
-	TweenMax.fromTo('#nucleus',2,{rotationY: getRandomInt(-300,300), rotationX: getRandomInt(-300,300), z: 5000},{rotationY: 590, rotationX: 500, z:0, onComplete: startSite});
+	TweenMax.fromTo('#nucleus',2,{rotationY: getRandomInt(-300,1000), rotationX: getRandomInt(-300,1000), z: 5000},{rotationY: 590, rotationX: 500, z:0, onComplete: startSite});
 	TweenMax.to('.page',1,{opacity: 0.8});
 	//TweenMax.to('#nucleus',10,{});
 });
