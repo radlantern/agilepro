@@ -10,7 +10,8 @@ Modernizr.load([
     }
   },
   {
-    load:'//cdnjs.cloudflare.com/ajax/libs/gsap/1.11.6/TweenMax.min.js'
+    load:['//cdnjs.cloudflare.com/ajax/libs/gsap/1.11.6/TweenMax.min.js',
+         '/js/lib/handlebars-v1.3.0.js']
   },
   {
     load: 'js/siteInterations.js'
