@@ -1,3 +1,5 @@
+//Site bootstrapper.
+//Handle the loading of libraries, fallbacks and core site interation.
 Modernizr.load([
   {
     load: '//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',

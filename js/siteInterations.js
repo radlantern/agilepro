@@ -3,29 +3,81 @@ function getRandomInt (min, max) {
 }
 $(document).ready(function()
 {
-	var $window = $(window);
-	var win = {height: $window.height(), width: $window.width()};
-
-	//$('.page').css({height: win.height / 2, width: win.width});
-	//TweenMax.set($('#nucleus'),{height: win.height/1.5, width: win.height/1.5});
-	//TweenMax.set($('.page'),{transformOrigin:"50% 50% 100"});
-
-	var sides = $('.page').length;
-	/*$('.page').each(function(index){
-		//place each page to a side of the center.
-		var rotation = 360 / sides * index;
-		var distance = win.height/3;
-		if (rotation > 89 || rotation > 269) {
-			distance = distance * -1;
-		}
-		TweenMax.to($(this),0,{ rotationY: rotation, z: distance});
-	});*/
-	TweenMax.fromTo('#nucleus',2,{rotationY: getRandomInt(-300,1000), rotationX: getRandomInt(-300,1000), z: 5000},{rotationY: 590, rotationX: 500, z:0, onComplete: startSite});
-	TweenMax.to('.page',1,{opacity: 0.8});
-	//TweenMax.to('#nucleus',10,{});
+	//Perform the fly-in animation
+	TweenMax.fromTo('#nucleus',2,{rotationY: getRandomInt(-500,500), rotationX: getRandomInt(-500,500), z: 5000},{rotationY: 230, rotationX: 140, z:0, onComplete: logoInteractions});
+	TweenMax.to('.face',0.75,{opacity: 0.8});
 });
 
-function startSite() {
-	//TweenMax.to('#shape',10,{rotationZ: 360, ease: Linear.easeNone});
+function loader(p) {
+	var percentage = p;
+	if (percentage === 0) {
+		TweenMax.set('#progressPusher',{width: percentage+'%'});
+		TweenMax.to('#loaderBar',0.5,{opacity: 1});
+		return;
+	}
+	TweenMax.to('#progressPusher',2,{width: percentage+'%', onComplete:
+		function(){
+			if(percentage >= 100){
+				TweenMax.to('#loaderBar',0.5,{opacity: 0});
+			}
+		}
+	});
+}
 
+function logoInteractions() {
+	danceLoop();
+
+	//H8Rs gonna H8.  One-liners gonna play.
+	$('#siteName').css({display: 'inline-block'}).html('<span>'+$('#siteName').text().split("").join('</span><span>')+'</span>').find('span').css({color: '#fdf5ec'}).each(function(index){$(this).attr('id','nameLetter'+index)});
+
+	$('#siteName span').each(function(index){
+		var letter = this;
+		TweenMax.to(this,0.4,{css:{color: '#8fcaf1', textShadow:"-4px 0px 8px #8fcaf1"}});
+		TweenMax.to(this,0.8,{css:{color: '#000000'}, delay: 0.1 * index + 0.6});
+		TweenMax.to(this,0.4,{css:{textShadow:"1px 1px 8px #ffba75"}, delay: 0.1 * index + 0.4});
+		TweenMax.to(this,0.6,{css:{textShadow:"0px 0px 0px #fdf5ec"}, delay:1.5, onComplete: function(){
+				$(letter).attr({style: ''});
+			}
+		});
+	});
+	
+	//tells the loader to become visible
+	loader(0);
+	//sets the progress bar to 100% for no good reason;
+	setTimeout(function(){ loader(100); },1500);
+
+	//For Jason
+	$('#logo').css({cursor: 'help'}).click(function(){
+		if(window.wheeeTl && window.wheeeTl._active) return;
+		danceLoop(true);
+		var tl = window.wheeeTl = new TimelineMax({repeat:0, onComplete: danceLoop});
+		tl.add(TweenMax.to('#nucleus',3,{rotationY: 3000}));
+		tl.add(TweenMax.to('#nucleus',3,{rotationY: 230, rotationX: 140, ease: Sine.easeInOut}));
+		TweenMax.to('#wheee',0.5,{css:{opacity: 1}});
+		TweenMax.to('#wheee',0.5,{css:{opacity: 0}, delay: 2});
+	});
+}
+
+//spins the cube to some random coords then back to some multiple of the base coords.
+function danceLoop(stop) {
+	var tl;
+	if (!window.danceLoopTimer) {
+		$('#nucleus').addClass('dance');
+		window.danceLoopTimer = setTimeout(danceLoop, 5000);
+		return;
+	}
+	if (stop) {
+		if (window.danceTl) {
+			window.danceTl.stop();
+		}
+		clearTimeout(window.danceLoopTimer);
+		window.danceLoopTimer = false;
+		$('#nucleus').removeClass('dance');
+		return;
+	}
+	tl = window.danceTl = new TimelineMax({repeat:0});
+	tl.add(TweenMax.to('#nucleus.dance',2,{rotationY: getRandomInt(-360,360), rotationX: getRandomInt(-360,360)}));
+	tl.add(TweenMax.to('#nucleus.dance',2,{rotationY: getRandomInt(-360,360), rotationX: getRandomInt(-360,360)}));
+	tl.add(TweenMax.to('#nucleus.dance',2,{rotationY: 230, rotationX: 140,}));
+	window.danceLoopTimer = setTimeout(danceLoop, 15000);
 }

@@ -1,12 +1,16 @@
 html, body {
+  font-family: 'Helvetica', 'Arial', 'Sniglet', sans-serif;
+  font-size: 16px;
   height: 100%;
   padding: 0;
   margin: 0;
   background: #fdf5ec; }
 
 #header {
-  box-shadow: 0px 0px 8px #008AC9;
-  padding-bottom: 10px; }
+  position: relative;
+  box-shadow: 0px 0px 8px #008ac9;
+  height: 80px;
+  white-space: nowrap; }
 
 #logo {
   display: inline-block;
@@ -18,14 +22,23 @@ html, body {
   -webkit-perspective: 5000px; }
 
 #siteName {
+  display: none;
+  font-size: 40px;
   font-family: 'Pacifico', 'Graduate', cursive;
-  font-size: 40px; }
+  color: #000000; }
+  #siteName span {
+    display: inline-block; }
+
+#mooo {
+  display: inline-block;
+  color: #fdf5ec;
+  font-size: 40px;
+  font-family: 'Pacifico', 'Graduate', cursive; }
 
 #nucleus {
   text-align: center;
   display: inline-block;
   position: relative;
-  /*-webkit-animation: spin 10s linear 0s infinite;*/
   -webkit-transform-style: preserve-3d;
   -webkit-transform: rotateX(40deg) translate3d(0.5, 0.5, 0px);
   height: 30px;
@@ -38,25 +51,56 @@ html, body {
   100% {
     transform: rotateY(360deg); } }
 
-.page {
+#wheee {
+  opacity: 0;
+  position: absolute;
+  top: 1px;
+  left: 66px;
+  font-size: 14px;
+  font-family: 'Sniglet', sans-serif; }
+  #wheee span {
+    position: relative;
+    top: 0.9em; }
+
+.face {
   position: absolute;
   height: inherit;
   width: inherit;
   opacity: 0;
-  border: 1px solid black; }
+  border: 1px solid black;
+  border-left: none; }
 
-#intro {
+.cube .front {
   background: #1B8DDC;
   -webkit-transform: rotateY(0deg) translateZ(15px); }
-
-#about {
+.cube .right {
   background: #CD2825;
   -webkit-transform: rotateY(90deg) translateZ(15px); }
-
-#lab {
+.cube .back {
   background: #0A1031;
   -webkit-transform: rotateY(180deg) translateZ(15px); }
-
-#contact {
+.cube .left {
   background: #767575;
   -webkit-transform: rotateY(270deg) translateZ(15px); }
+
+#loaderBar {
+  position: relative;
+  bottom: 6px;
+  height: 8px;
+  white-space: nowrap;
+  opacity: 0; }
+  #loaderBar span {
+    display: inline-block; }
+  #loaderBar #progressPusher {
+    height: 1px;
+    width: 50%;
+    background: #008ac9; }
+  #loaderBar #progress {
+    height: 1px;
+    width: 1px;
+    border-radius: 1px;
+    background: #008ac9;
+    box-shadow: 0 0 7px 2px #008ac9; }
+
+#content {
+  margin: 20px; }
