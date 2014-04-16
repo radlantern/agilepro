@@ -21,12 +21,16 @@ html, body {
   text-align: center;
   transform-style: preserve-3d;
   -webkit-perspective: $perspective;
-  cursor: help;
 }
 
 #siteName {
-  font-family: 'Pacifico', 'Graduate', cursive;
+  display: inline-block;
+  font-family: 'Inconsolata', 'Pacifico', 'Graduate', cursive;
   font-size: 40px;
+  -webkit-perspective: 500px;
+  span, div {
+	display: inline-block;
+  }
 }
 
 #nucleus {
@@ -85,7 +89,8 @@ html, body {
 
 #loaderBar {
   position: relative;
-  bottom: -5px;
+  bottom: 6px;
+  height: 8px;
   span {
 	display: inline-block;
   }
