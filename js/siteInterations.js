@@ -3,29 +3,47 @@ function getRandomInt (min, max) {
 }
 $(document).ready(function()
 {
-	var $window = $(window);
-	var win = {height: $window.height(), width: $window.width()};
-
-	//$('.page').css({height: win.height / 2, width: win.width});
-	//TweenMax.set($('#nucleus'),{height: win.height/1.5, width: win.height/1.5});
-	//TweenMax.set($('.page'),{transformOrigin:"50% 50% 100"});
-
-	var sides = $('.page').length;
-	/*$('.page').each(function(index){
-		//place each page to a side of the center.
-		var rotation = 360 / sides * index;
-		var distance = win.height/3;
-		if (rotation > 89 || rotation > 269) {
-			distance = distance * -1;
-		}
-		TweenMax.to($(this),0,{ rotationY: rotation, z: distance});
-	});*/
-	TweenMax.fromTo('#nucleus',2,{rotationY: getRandomInt(-300,300), rotationX: getRandomInt(-300,300), z: 5000},{rotationY: 590, rotationX: 500, z:0, onComplete: startSite});
-	TweenMax.to('.page',1,{opacity: 0.8});
-	//TweenMax.to('#nucleus',10,{});
+	//Perform the intro animation then load the
+	TweenMax.fromTo('#nucleus',2,{rotationY: getRandomInt(-500,500), rotationX: getRandomInt(-500,500), z: 5000},{rotationY: 230, rotationX: 140, z:0, onComplete: logoInteractions});
+	TweenMax.to('.face',0.75,{opacity: 0.8});
 });
 
-function startSite() {
-	//TweenMax.to('#shape',10,{rotationZ: 360, ease: Linear.easeNone});
+function logoInteractions() {
+	danceLoop();
+	$('#nucleus').click(function(){
+		if(window.wheeeTl && window.wheeeTl._active)
+		{
+			return;
+		}
+		danceLoop(true);
+		var tl = window.wheeeTl = new TimelineMax({repeat:0, onComplete: danceLoop}); //alert('done'); }
+		tl.add(TweenMax.to('#nucleus',3,{rotationY: 3000}));
+		tl.add(TweenMax.to('#nucleus',3,{rotationY: 230, rotationX: 140, ease: Sine.easeInOut}));
+		TweenMax.to('#wheee',0.5,{css:{opacity: 1}});
+		TweenMax.to('#wheee',0.5,{css:{opacity: 0}, delay: 2});
+	});
+}
 
+//spins the cube to some random coords then back to some multiple of the base coords.
+function danceLoop(stop) {
+	var tl;
+	if (!window.danceLoopTimer) {
+		$('#nucleus').addClass('dance');
+		window.danceLoopTimer = setTimeout(danceLoop, 5000);
+		return;
+	}
+	if (stop) {
+		if (window.danceTl) {
+			window.danceTl.stop();
+		}
+		clearTimeout(window.danceLoopTimer);
+		window.danceLoopTimer = false;
+		$('#nucleus').removeClass('dance');
+		return;
+	}
+	tl = window.danceTl = new TimelineMax({repeat:0});
+	tl.add(TweenMax.to('#nucleus.dance',2,{rotationY: getRandomInt(-500,500), rotationX: getRandomInt(-500,500)}));
+	tl.add(TweenMax.to('#nucleus.dance',2,{rotationY: getRandomInt(-500,500), rotationX: getRandomInt(-500,500)}));
+	tl.add(TweenMax.to('#nucleus.dance',2,{rotationY: 590, rotationX: 500,}));
+	window.danceLoopTimer = setTimeout(danceLoop, 15000);
 }
