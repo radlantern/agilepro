@@ -125,13 +125,15 @@ html, body {
   }
 }
 
+$rightColWidth: 320px;
 #content {
-
+  display: block;
   column-width: 20em;
   line-height: 1.5em;
+  text-align: justify;
 
   p {
-	margin: 1em 1em 2em 1em;
+	margin: 1em 1em 1.5em 1em;
   }
 
   .right
@@ -141,13 +143,44 @@ html, body {
 
   .captionedImage {
 	margin: 10px;
-	display: inline-block;
 	text-align: center;
 	line-height: 0.8em;
-	img {
-	  display: block;
-	}
 	span { font-size: 12px; font-style: italic; }
+  }
+
+  .mainCol
+  {
+	width: 100%;
+	float: left;
+	margin-left: -$rightColWidth;
+  }
+  .contentInner
+  {
+	margin-left: $rightColWidth;
+  }
+  .rightCol {
+	float: right;
+	width: $rightColWidth;
+  }
+}
+
+@media all and (max-width: 699px) {
+  #content
+  {
+	.mainCol
+	{
+	  width: 100%;
+	  float: none;
+	  margin-left: 0;
+	}
+	.contentInner
+	{
+	  margin-left: 0;
+	}
+	.rightCol {
+	  float: right;
+	  width: 100%;
+	}
   }
 }
 

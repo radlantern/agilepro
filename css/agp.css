@@ -111,19 +111,38 @@ html, body {
     box-shadow: 0 0 7px 2px #008ac9; }
 
 #content {
+  display: block;
   column-width: 20em;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+  text-align: justify; }
   #content p {
-    margin: 1em 1em 2em 1em; }
+    margin: 1em 1em 1.5em 1em; }
   #content .right {
     float: right; }
   #content .captionedImage {
     margin: 10px;
-    display: inline-block;
     text-align: center;
     line-height: 0.8em; }
-    #content .captionedImage img {
-      display: block; }
     #content .captionedImage span {
       font-size: 12px;
       font-style: italic; }
+  #content .mainCol {
+    width: 100%;
+    float: left;
+    margin-left: -320px; }
+  #content .contentInner {
+    margin-left: 320px; }
+  #content .rightCol {
+    float: right;
+    width: 320px; }
+
+@media all and (max-width: 699px) {
+  #content .mainCol {
+    width: 100%;
+    float: none;
+    margin-left: 0; }
+  #content .contentInner {
+    margin-left: 0; }
+  #content .rightCol {
+    float: right;
+    width: 100%; } }

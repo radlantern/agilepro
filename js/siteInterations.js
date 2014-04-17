@@ -11,5 +11,4 @@ function changePage(view,context) {
 			TweenMax.to($content, 1, {opacity: 1});
 		});
 	}});
-
 }
