@@ -131,6 +131,7 @@ $rightColWidth: 320px;
   column-width: 20em;
   line-height: 1.5em;
   text-align: justify;
+  margin-left: 320px;
 
   p {
 	margin: 1em 1em 1.5em 1em;
@@ -164,7 +165,53 @@ $rightColWidth: 320px;
   }
 }
 
-@media all and (max-width: 699px) {
+#navStack
+{
+  float: left;
+  width: 320px;
+  transform-style: preserve-3d;
+  -webkit-perspective: $perspective;
+  position: relative;
+
+  .navPlatform{
+	width: 90%;
+	margin: 5%;
+	transform-style: preserve-3d;
+	-webkit-perspective: $perspective;
+	z-index: 1000;
+	
+	.navSquare {
+	  display: inline-block;
+	  width: 70px;
+	  height: 70px;
+	  margin: 3px;
+	  background: #ff8000;
+	  cursor: pointer;
+	  opacity: 0.8;
+	}
+
+  }
+}
+
+.current .navSquare:hover{
+  box-shadow: 0 0 10px 5px #00ff00;
+  -webkit-transform: translateZ(0px);
+  opacity: 1;
+}
+
+
+@media all and (max-width: 639px) {
+  #navStack
+  {
+	float: none;
+	width: 100%;
+  }
+  #content {
+	margin-left: 0;
+  }
+}
+
+@media all and (max-width: 959px) {
   #content
   {
 	.mainCol
