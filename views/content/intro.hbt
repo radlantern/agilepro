@@ -1,4 +1,11 @@
-<div class="nineSixty">
-	<p class="col2">Agilepro is the personal website of {{myName}}.</p>
-	<div></div><img class="right" src="/img/hula-bee.png">
-</div>
+<div style="width: 300px" class="captionedImage right"><img src="/img/hula-bee.png">
+<span>Hula is not impressed.</span></div>
+
+<p>Agilepro is the personal website of <strong>{{myName}}</strong>.</p>
+<p>Here you can find his blogs on various technology related topics as well as some basic personal and professional information.
+Many of the site elements are interactive, even if only mildly so.  If you find any of them interesting, feel free to pick apart
+the code, reuse what you find.  Keep in mind that this site is very much a fluid experiment and the code is not always the same
+high quality, production ready, code the developer writes for a living.
+The author is constantly testing things out in this space.  For professional code samples please check out the blog articles
+or other demos.  With that in mind, enjoy!</p>
+<p>This site makes use of a lot of newer HTML5 technologies and may not work well on older browsers.</p>

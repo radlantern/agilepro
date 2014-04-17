@@ -26,7 +26,7 @@ function logoInteractions() {
 	danceLoop();
 
 	//H8Rs gonna H8.  One-liners gonna play.
-	$('#siteName').css({display: 'inline-block'}).html('<span>'+$('#siteName').text().split("").join('</span><span>')+'</span>').find('span').css({color: '#fdf5ec'}).each(function(index){$(this).attr('id','nameLetter'+index)});
+	$('#siteName').css({display: 'inline-block'}).html('<span>'+$('#siteName').text().split("").join('</span><span>')+'</span>').find('span').css({color: '#fbf0e3'}).each(function(index){$(this).attr('id','nameLetter'+index)});
 
 	$('#siteName span').each(function(index){
 		var letter = this;

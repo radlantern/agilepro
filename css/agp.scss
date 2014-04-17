@@ -16,6 +16,7 @@ html, body {
   height: 80px;
   white-space: nowrap;
   line-height: 22px;
+  background: #fbf0e3;
 }
 #logo {
   display: inline-block;
@@ -38,7 +39,7 @@ html, body {
 }
 #mooo {
   display: inline-block;
-  color: #fdf5ec;
+  color: #fbf0e3;
   font-size: 20px;
   font-family: 'Pacifico', 'Graduate', cursive;
 }
@@ -125,21 +126,30 @@ html, body {
 }
 
 #content {
-  img.right
+
+  column-width: 20em;
+  line-height: 1.5em;
+
+  p {
+	margin: 1em 1em 2em 1em;
+  }
+
+  .right
   {
 	float: right;
-	margin: 1em 2em;
   }
-  p {
+
+  .captionedImage {
+	margin: 10px;
 	display: inline-block;
-	background: #fff;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-shadow: 1px 1px 3px #fff;
-	padding: 8px 10px;
+	text-align: center;
+	line-height: 0.8em;
+	img {
+	  display: block;
+	}
+	span { font-size: 12px; font-style: italic; }
   }
 }
 
-.nineSixty {
-	width: 960px; margin: 0 auto;
-  }
+
+
