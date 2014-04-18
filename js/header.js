@@ -3,6 +3,14 @@ function startHeader()
   //Perform the fly-in animation
   TweenMax.fromTo('#nucleus',2,{rotationY: getRandomInt(-270,270), rotationX: getRandomInt(-270,270), z: 250},{rotationY: 230, rotationX: 140, z:0, onComplete: logoInteractions});
   TweenMax.to('.face',0.75,{opacity: 0.8});
+
+  //tells the loader to become visible
+
+	//sets the progress bar to 100% for no good reason;
+	setTimeout(function(){
+		startNavStack();
+	},500);
+
 }
 
 function loader(p) {
@@ -26,7 +34,7 @@ function logoInteractions() {
 	danceLoop();
 
 	//H8Rs gonna H8.  One-liners gonna play.
-	$('#siteName').css({display: 'inline-block'}).html('<span>'+$('#siteName').text().split("").join('</span><span>')+'</span>').find('span').css({color: '#fbf0e3'}).each(function(index){$(this).attr('id','nameLetter'+index)});
+	$('#siteName').css({display: 'inline-block'}).html('<span>'+$('#siteName').text().split("").join('</span><span>')+'</span>').find('span').css({color: $('#header').css('backgroundColor')}).each(function(index){$(this).attr('id','nameLetter'+index)});
 
 	$('#siteName span').each(function(index){
 		var letter = this;
@@ -41,14 +49,6 @@ function logoInteractions() {
 	//split wheee
 	$('#wheee').css({display: 'inline-block'}).html('<span>'+$('#wheee').text().split("").join('</span><span>')+'</span>');
 
-	//tells the loader to become visible
-	loader(0);
-	loader(50);
-	//sets the progress bar to 100% for no good reason;
-	setTimeout(function(){
-		loader(100);
-		startNavStack();
-	},1500);
 
 	//For Jason
 	$('#logo').css({cursor: 'help'}).click(function(){

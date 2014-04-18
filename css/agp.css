@@ -4,7 +4,7 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  background: #fdf5ec; }
+  background: #fefcfa; }
 
 #header {
   position: relative;
@@ -117,7 +117,20 @@ html, body {
   text-align: justify;
   margin-left: 320px; }
   #content p {
-    margin: 1em 1em 1.5em 1em; }
+    margin: 1em 10px 1.2em;
+    background: #ffffff;
+    display: block;
+    padding: 8px 12px;
+    border: 3px double #c0c0c0;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 20px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 20px;
+    -moz-border-radius-bottomleft: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 10px; }
   #content .right {
     float: right; }
   #content .captionedImage {
@@ -139,7 +152,8 @@ html, body {
 
 #navStack {
   float: left;
-  width: 320px;
+  width: 276px;
+  margin: 22px 0 0 22px;
   transform-style: preserve-3d;
   -webkit-perspective: 250px;
   position: relative; }
@@ -154,19 +168,20 @@ html, body {
       width: 70px;
       height: 70px;
       margin: 3px;
-      background: #ff8000;
-      cursor: pointer;
-      opacity: 0.8; }
+      border: 2px solid #0A1031;
+      background: #767575;
+      cursor: pointer; }
+      #navStack .navPlatform .navSquare svg path {
+        fill: #ffffff; }
 
 .current .navSquare:hover {
-  box-shadow: 0 0 10px 5px #00ff00;
-  -webkit-transform: translateZ(0px);
-  opacity: 1; }
+  box-shadow: 0 0 5px 2px #CD2825;
+  -webkit-transform: translateZ(0px); }
 
 @media all and (max-width: 639px) {
   #navStack {
     float: none;
-    width: 100%; }
+    margin: 0 auto 60px; }
 
   #content {
     margin-left: 0; } }
