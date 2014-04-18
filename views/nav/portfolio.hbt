@@ -1,13 +1,13 @@
 <div id="portfolioNav" class="navPlatform current">
 	<div class="navSquare" data-tip="Back" data-back="true"><img src="/img/back.svg" style=" height: 100%; width: 100%;"></div>
-	<div class="navSquare"></div>
-	<div class="navSquare"></div>
+	<div class="navSquare" data-tip="Games" data-function="page:sort(games)"><img src="/img/games.svg" style=" height: 100%; width: 100%;"></div>
+	<div class="navSquare" data-tip="Apps" data-function="page:sort(apps)"><img src="/img/android.svg" style=" height: 80%; width: 80%; margin: 10%;"></div>
 
-	<div class="navSquare"></div>
+	<div class="navSquare" data-tip="Web" data-function="page:sort(web)"><img src="/img/web.svg" style=" height: 80%; width: 80%; margin: 10%;"></div>
 	<div class="nullSquare"><img src="/img/pictures.svg" style=" height: 90%; width: 90%; margin: 5%;"></div>
-	<div class="navSquare"></div>
+	<div class="navSquare" data-tip="Writing" data-function="page:sort(writing)"><img src="/img/writing.svg" style=" height: 80%; width: 80%; margin: 10%;"></div>
 
-	<div class="navSquare"></div>
+	<div class="navSquare" data-tip="Custom PCs" data-function="page:sort(custom)"><img src="/img/custom.svg" style=" height: 80%; width: 80%; margin: 10%;"></div>
 	<div class="navSquare"></div>
 	<div class="navSquare"></div>
 </div>

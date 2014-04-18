@@ -27,10 +27,11 @@ function loadNavStack(path) {
 		{
 			$('body').unbind('mousemove').mousemove(function(e)
 			{
-				var maxTilt = 20;
+				var maxTilt = 30;
 				var $this = $('#navStack .navPlatform');
 				var height = $this.height();
 				var width = $this.width();
+				var delay = 0.5;
 
 				var navOffset = $this.offset();
 
@@ -40,14 +41,13 @@ function loadNavStack(path) {
 				var yMod = maxTilt * accrossPercent;
 				var xMod = maxTilt * upDownPercent;
 
-				if (yMod > maxTilt || yMod < -maxTilt) {
-					yMod = maxTilt | (-0 & yMod);
-				}
-				if (xMod > maxTilt || xMod < -maxTilt) {
-					xMod = maxTilt | (-0 & xMod);
+				if (yMod > maxTilt || yMod < -maxTilt || xMod > maxTilt || xMod < -maxTilt) {
+					yMod = -5; //maxTilt | (-0 & yMod);
+					xMod = 5;
+					delay = 1;
 				}
 				
-				TweenMax.to($this,0.5,{rotationX: xMod,rotationY: -yMod});
+				TweenMax.to($this,0.8,{rotationX: xMod,rotationY: -yMod, ease: Sine.easeOut});
 			});
 		}});
 
