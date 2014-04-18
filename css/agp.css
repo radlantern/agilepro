@@ -110,12 +110,15 @@ html, body {
     background: #008ac9;
     box-shadow: 0 0 7px 2px #008ac9; }
 
+#siteWrap {
+  max-width: 1320px;
+  margin: 0 auto; }
+
 #content {
   display: block;
-  column-width: 20em;
   line-height: 1.5em;
   text-align: justify;
-  margin-left: 320px; }
+  margin-left: 250px; }
   #content p {
     margin: 1em 10px 1.2em;
     background: #ffffff;
@@ -140,6 +143,8 @@ html, body {
     #content .captionedImage span {
       font-size: 12px;
       font-style: italic; }
+  #content .singleCol {
+    float: left; }
   #content .mainCol {
     width: 100%;
     float: left;
@@ -152,27 +157,41 @@ html, body {
 
 #navStack {
   float: left;
-  width: 276px;
-  margin: 22px 0 0 22px;
+  width: 210px;
+  height: 250px;
+  margin: 60px 0 0 22px;
   transform-style: preserve-3d;
   -webkit-perspective: 250px;
   position: relative; }
+  #navStack #navTip {
+    position: absolute;
+    top: -2.5em;
+    left: 30px; }
   #navStack .navPlatform {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 90%;
     margin: 5%;
     transform-style: preserve-3d;
-    -webkit-perspective: 250px;
-    z-index: 1000; }
+    -webkit-perspective: 250px; }
     #navStack .navPlatform .navSquare {
       display: inline-block;
-      width: 70px;
-      height: 70px;
+      width: 50px;
+      height: 50px;
       margin: 3px;
       border: 2px solid #0A1031;
       background: #767575;
-      cursor: pointer; }
+      cursor: pointer;
+      overflow: hidden; }
       #navStack .navPlatform .navSquare svg path {
         fill: #ffffff; }
+    #navStack .navPlatform .nullSquare {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      overflow: hidden; }
 
 .current .navSquare:hover {
   box-shadow: 0 0 5px 2px #CD2825;
@@ -181,7 +200,7 @@ html, body {
 @media all and (max-width: 639px) {
   #navStack {
     float: none;
-    margin: 0 auto 60px; }
+    margin: 60px auto; }
 
   #content {
     margin-left: 0; } }

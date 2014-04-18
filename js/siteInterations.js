@@ -15,58 +15,88 @@ function changePage(view,context) {
 	}});
 }
 
-function loadNavStack() {
-	$.get('/views/nav/home.hbt').then(function(src) {
+function loadNavStack(path) {
+	path = path || 'home';
+	$.get('/views/nav/'+path+'.hbt').then(function(src) {
 
-		$('#navStack').append(Handlebars.compile(src)());
+		var $newMenu = $(Handlebars.compile(src)());
+		$newMenu.find('.navPlatform').css({opacity: 0});
+		$('#navStack').append($newMenu);
+		
+		TweenMax.fromTo($newMenu.find('.navPlatform'),1,{z:200},{z:0 ,onComplete: function()
+		{
+			$('body').unbind('mousemove').mousemove(function(e)
+			{
+				var maxTilt = 20;
+				var $this = $('#navStack .navPlatform');
+				var height = $this.height();
+				var width = $this.width();
 
+				var navOffset = $this.offset();
 
+				var accrossPercent = (e.screenX - navOffset.left) / width - 0.6;
+				var upDownPercent = (e.screenY - navOffset.top) / height - 0.9;
 
-		TweenMax.to($('#navStack .navPlatform'),0.5,{rotationX: 10,rotationY: -20,onComplete: function()
-						{
-							$('body').mousemove(function(e)
-							{
-								var maxTilt = 20;
-								var $this = $('#navStack .navPlatform');
-								var height = $this.height();
-								var width = $this.width();
+				var yMod = maxTilt * accrossPercent;
+				var xMod = maxTilt * upDownPercent;
 
-								var navOffset = $this.offset();
+				if (yMod > maxTilt || yMod < -maxTilt) {
+					yMod = maxTilt | (-0 & yMod);
+				}
+				if (xMod > maxTilt || xMod < -maxTilt) {
+					xMod = maxTilt | (-0 & xMod);
+				}
+				
+				TweenMax.to($this,0.5,{rotationX: xMod,rotationY: -yMod});
+			});
+		}});
 
-								var accrossPercent = (e.screenX - navOffset.left) / width - 0.6;
-								var upDownPercent = (e.screenY - navOffset.top) / height - 0.75;
-
-								var yMod = maxTilt * accrossPercent;
-								var xMod = maxTilt * upDownPercent;
-
-								if (yMod > maxTilt || yMod < -maxTilt) {
-									yMod = maxTilt | (-0 & yMod);
-								}
-								if (xMod > maxTilt || xMod < -maxTilt) {
-									xMod = maxTilt | (-0 & xMod);
-								}
-
-								TweenMax.to($this,0.5,{rotationX: xMod,rotationY: -yMod});
-							});
-						}});
-		$('.navSquare').click(function(){
+		$newMenu.find('.navSquare')
+		.mouseenter(function(){
+			$('#navTip').html($(this).data('tip'));
+		})
+		.mouseleave(function(){
+			$('#navTip').html('');
+		})
+		.click(function(){
 			if (!$(this).parent().hasClass('current')) {
 				return;
 			}
-			$(this).parent().removeClass('current');
-			TweenMax.to(this,0.5,{z:5, opacity: 1,});
-			TweenMax.to($(this).siblings(),0.35,{z:-10, opacity: 0.5});
 
+			TweenMax.to(this,0.5,{z:20, background: '#CD2825',});
+			TweenMax.to($(this).siblings('.navSquare'),0.35,{z:0, background: '#767575'});
+
+			if($(this).data('back'))
+			{
+				var $previousMenus = $(this).parent().siblings();
+				TweenMax.to($(this).parent(),0.25,{z:200, opacity: 0, ease: Sine.easeOut, onComplete: function(){
+					$(this.target).remove();
+				}});
+				$previousMenus.each(function(index){
+					TweenMax.to(this,0.25,{z:0, opacity: 1, delay: 0.5 * $previousMenus.length - index - 1 + 0.5});
+					if (index + 1 === $previousMenus.length) {
+						$(this).addClass('current');
+					}
+				});
+				return;
+			}
 			if($(this).data('menu'))
 			{
-				TweenMax.to($(this).parent(),0.25,{z:-100, x: -10, ease: Sine.easeInOut, delay: 0.25});
-			}else{
+				$parent = $(this).parent();
+				$parent.removeClass('current');
+				var menu = $(this).data('menu');
+				TweenMax.to($parent,0.25,{z:-100, opacity: 0.5, ease: Sine.easeInOut, delay: 0.35, onComplete: function(){
+					loadNavStack(menu);
+				}});
+			}
+
+			if($(this).data('url'))
+			{
 				loader(0);
 				loader(50);
 				loader(100);
 				changePage($(this).data('url'),viewContext);
 			}
-
 		});
 	});
 }

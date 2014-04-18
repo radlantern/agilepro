@@ -126,14 +126,17 @@ html, body {
   }
 }
 
+#siteWrap {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
 $rightColWidth: 320px;
 #content {
   display: block;
-  column-width: 20em;
   line-height: 1.5em;
   text-align: justify;
-  margin-left: 320px;
-
+  margin-left: 250px;
   p {
 	margin: 1em 10px 1.2em;
 	background: #ffffff;
@@ -163,6 +166,10 @@ $rightColWidth: 320px;
 	span { font-size: 12px; font-style: italic; }
   }
 
+  .singleCol
+  {
+	float: left;
+  }
   .mainCol
   {
 	width: 100%;
@@ -179,34 +186,51 @@ $rightColWidth: 320px;
   }
 }
 
+
+
 #navStack
 {
   float: left;
-  width: 276px;
-  margin:22px 0 0 22px;
+  width: 210px;
+  height: 250px;
+  margin:60px 0 0 22px;
   transform-style: preserve-3d;
   -webkit-perspective: $perspective;
   position: relative;
-
+  #navTip {
+	position: absolute;
+	top: -2.5em;
+	left: 30px;
+  }
   .navPlatform{
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 90%;
 	margin: 5%;
 	transform-style: preserve-3d;
 	-webkit-perspective: $perspective;
-	z-index: 1000;
 	
 	.navSquare {
 	  display: inline-block;
-	  width: 70px;
-	  height: 70px;
+	  width: 50px;
+	  height: 50px;
 	  margin: 3px;
 	  border: 2px solid #0A1031;
 	  background: #767575;
 	  cursor: pointer;
+	  overflow: hidden;
 	  
 	  svg path{
 		fill: #ffffff;
 	  }
+	}
+	.nullSquare {
+	  display: inline-block;
+	  width: 50px;
+	  height: 50px;
+	  margin: 5px;
+	  overflow: hidden;
 	}
 
   }
@@ -221,7 +245,7 @@ $rightColWidth: 320px;
   #navStack
   {
 	float: none;
-	margin: 0 auto 60px;
+	margin: 60px auto;
   }
   #content {
 	margin-left: 0;
