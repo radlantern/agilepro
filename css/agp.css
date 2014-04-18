@@ -183,7 +183,8 @@ html, body {
       border: 2px solid #0A1031;
       background: #767575;
       cursor: pointer;
-      overflow: hidden; }
+      overflow: hidden;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
       #navStack .navPlatform .navSquare svg path {
         fill: #ffffff; }
     #navStack .navPlatform .nullSquare {
