@@ -155,6 +155,11 @@ html, body {
     float: right;
     width: 320px; }
 
+#navTip {
+  position: absolute;
+  top: 90px;
+  left: 30px; }
+
 #navStack {
   float: left;
   width: 210px;
@@ -163,10 +168,6 @@ html, body {
   transform-style: preserve-3d;
   -webkit-perspective: 250px;
   position: relative; }
-  #navStack #navTip {
-    position: absolute;
-    top: -2.5em;
-    left: 30px; }
   #navStack .navPlatform {
     position: absolute;
     top: 0;

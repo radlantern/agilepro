@@ -3,10 +3,11 @@
 		 data-url="/content/intro"><img src="/img/home.svg" style=" height: 80%; width: 80%; margin: 10%;"></div>
 	<div class="navSquare" data-tip="Portfolio"
 		 data-url="/content/portfolio" data-menu="portfolio"><img src="/img/gallery.svg" style=" height: 100%; width: 100%;"></div>
-	<div class="navSquare"data-tip="Portfolio"
+	<div class="navSquare" data-tip="Blog"
 		 data-url="/content/blog"><img src="/img/blog.svg" style=" height: 80%; width: 80%; margin: 10%;"></div>
 
-	<div class="navSquare"></div>
+	<div class="navSquare" data-tip="About Rob"
+		 data-url="/content/about"><img src="/img/profile.svg" style=" height: 80%; width: 80%; margin: 10%;"></div>
 	<div class="nullSquare"><img src="/img/atom.svg" style=" height: 90%; width: 90%; margin: 5%;"></div>
 	<div class="navSquare"></div>
 

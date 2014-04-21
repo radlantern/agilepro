@@ -187,7 +187,11 @@ $rightColWidth: 320px;
 }
 
 
-
+#navTip {
+	position: absolute;
+	top: 90px;
+	left: 30px;
+  }
 #navStack
 {
   float: left;
@@ -197,11 +201,7 @@ $rightColWidth: 320px;
   transform-style: preserve-3d;
   -webkit-perspective: $perspective;
   position: relative;
-  #navTip {
-	position: absolute;
-	top: -2.5em;
-	left: 30px;
-  }
+
   .navPlatform{
 	position: absolute;
 	top: 0;

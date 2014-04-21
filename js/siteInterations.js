@@ -73,7 +73,8 @@ function loadNavStack(path) {
 					$(this.target).remove();
 				}});
 				$previousMenus.each(function(index){
-					TweenMax.to(this,0.25,{z:0, opacity: 1, delay: 0.5 * $previousMenus.length - index - 1 + 0.5});
+					//z value is still not multiple level compatible.
+					TweenMax.to(this,0.25,{z:0 - ($previousMenus.length - index - 1) * 100, opacity: 1, delay: 0.5 * ($previousMenus.length - index - 1)});
 					if (index + 1 === $previousMenus.length) {
 						$(this).addClass('current');
 					}
@@ -88,6 +89,7 @@ function loadNavStack(path) {
 				TweenMax.to($parent,0.25,{z:-100, opacity: 0.5, ease: Sine.easeInOut, delay: 0.35, onComplete: function(){
 					loadNavStack(menu);
 				}});
+				//still needs code to animate more than one menu.
 			}
 
 			if($(this).data('url'))
