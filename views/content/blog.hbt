@@ -1,6 +1,11 @@
 <div class="mainCol">
 	<div class="contentInner">
 		<h1>Mod_Geek</h1>
+
+		<button onclick="$('iframe').attr('src','http://roblynch.me/')">Set IFrame Src</button>
+		<iframe></iframe>
+		
+		yup
 	</div>
 </div>
 <div class="rightCol">

@@ -1,0 +1,12 @@
+<html><body>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<h1> parent </h1>
+	<input id="email" type="text">
+	<button onclick="window.submitFrame.contentWindow.go(document.getElementById('email').value)">Submit</button>
+	<iframe id="submitFrame" src="form.html"></iframe>
+	<script>
+	function ok(url) {
+		$('button').html(url);
+	}
+	</script>
+</body></html>

@@ -14,7 +14,6 @@ function changePage(view,context) {
 		});
 	}});
 }
-
 function loadNavStack(path) {
 	path = path || 'home';
 	$.get('/views/nav/'+path+'.hbt').then(function(src) {
